@@ -13,8 +13,8 @@ generateExploratory.numeric <- function(data, colramp = c("red", "green")) {
 	numerics_names <- names(data)[unlist(lapply(data, is.numeric))]
 	for (var in numerics_names) {
   	color <- sample(grDevices::colors()[grep('gr(a|e)y', grDevices::colors(), invert = T)], 1) #Random color for each set of graphs for distinctiveness.
-  	hist(data[[var]], col = color, main = paste("Histogram of", var, ""), ylab = "Value", xlab = "Observation # (Sorted)")
-  	boxplot(data[var], col = color, main = paste("Boxplot of", var, ""), ylab = "Value", xlab = "Observation # (Sorted)")}
+  	hist(data[[var]], col = color, main = paste("Histogram of", var, ""), ylab = "Count", xlab = "Bin")
+  	boxplot(data[var], col = color, main = paste("Boxplot of", var, ""), ylab = "Value", xlab = "")}
 	whyDoesDevOffReturnStuff <- dev.off()
 
 	pdf(file = "~/ExplorationOutput_BinningCheck.pdf")
