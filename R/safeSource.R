@@ -4,6 +4,8 @@
 #' all in one function. This reduces the need for multiple install.packages or library
 #' calls during impromptu work. No extra error handling is included, so normal package
 #' and source errors will be thrown if applicable.
+#'
+#' This was my first ever published function.
 #' @param file The file to source.
 #' @param packages The packages that must be installed and/or loaded to safely source the file.
 #' @return Nothing.
