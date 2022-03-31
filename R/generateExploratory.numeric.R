@@ -8,7 +8,7 @@
 
 generateExploratory.numeric <- function(data, colramp = c("red", "green")) {
 
-	pdf(file = "~/ExplorationOutput_General.pdf")
+	pdf(file = "ExplorationOutput_General.pdf")
 	par(mfrow = c(2, 2))
 	numerics_names <- names(data)[unlist(lapply(data, is.numeric))]
 	for (var in numerics_names) {
@@ -17,7 +17,7 @@ generateExploratory.numeric <- function(data, colramp = c("red", "green")) {
   	boxplot(data[[var]], col = color, main = paste("Boxplot of", var, ""), ylab = "", xlab = "")}
 	whyDoesDevOffReturnStuff <- dev.off()
 
-	pdf(file = "~/ExplorationOutput_BinningCheck.pdf")
+	pdf(file = "ExplorationOutput_BinningCheck.pdf")
 	par(mfrow = c(1, 1))
 	pal <- colorRampPalette(colramp)
 	for (var in numerics_names) {
