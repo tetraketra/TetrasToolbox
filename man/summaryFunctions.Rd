@@ -2,7 +2,8 @@
 % Please edit documentation in R/summaryFunctions.R
 \name{summaryFunctions}
 \alias{summaryFunctions}
-\title{Runs summary functions on the supplied data with no additional arguments, returning as a list.}
+\title{Run summary functions on the supplied data with no additional arguments.
+Values returned as a list.}
 \usage{
 summaryFunctions(data, funcs = c("mean", "median", "range", "IQR", "fivenum"))
 }
@@ -15,5 +16,6 @@ summaryFunctions(data, funcs = c("mean", "median", "range", "IQR", "fivenum"))
 Named list of summary function return values.
 }
 \description{
-Runs summary functions on the supplied data with no additional arguments, returning as a list.
+Run summary functions on the supplied data with no additional arguments.
+Values returned as a list.
 }

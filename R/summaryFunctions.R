@@ -1,4 +1,5 @@
-#' Runs summary functions on the supplied data with no additional arguments, returning as a list.
+#' Run summary functions on the supplied data with no additional arguments.
+#' Values returned as a list.
 #' @param data The data to run the functions on.
 #' @param funcs The functions to execute, formatted as a character vector of function names.
 #' @return Named list of summary function return values.
