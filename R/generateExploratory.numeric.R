@@ -17,11 +17,9 @@ generateExploratory.numeric <- function(data, colramp = c("red", "green")) {
   	boxplot(data[var], col = color, main = paste("Boxplot of", var, ""), ylab = "Value", xlab = "Observation # (Sorted)")}
 	dev.off()
 
-	pal <- colorRampPalette(colramp)
-
 	pdf(file = "ExplorationOutput_BinningCheck.pdf")
 	par(mfrow = c(1, 1))
-	pal <- colorRampPalette(c("red", "green"))
+	pal <- colorRampPalette(colramp)
 	for (var in numerics_names) {
 		rampedColors <- pal(length(data[[var]]))
   	plot(1:length(data[[var]]), sort(data[[var]], na.last = TRUE),  main = paste("Binning Check for", var, ""), col = rampedColors, ylab = "Value", xlab = "Observation # (Sorted)")
