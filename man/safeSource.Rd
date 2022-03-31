@@ -20,3 +20,6 @@ all in one function. This reduces the need for multiple install.packages or libr
 calls during impromptu work. No extra error handling is included, so normal package
 and source errors will be thrown if applicable.
 }
+\details{
+This was my first ever published function.
+}
