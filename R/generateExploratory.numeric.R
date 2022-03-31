@@ -2,10 +2,11 @@
 #' all of the numeric variables in a dataframe.
 #'
 #' @param data Dataframe to extract numeric variables from and plot.
+#' @param colramp Colors to ramp between. Assumes red to green. Structure of c(first, second).
 #' @return Files "ExplorationOutput_General.pdf" and "ExplorationOutput_BinningCheck.pdf" in the same directory as the code ran.
 #' @export
 
-generateExploratory.numeric <- function(data, colramp = NULL) {
+generateExploratory.numeric <- function(data, colramp = c("red", "green")) {
 
 	pdf(file = "ExplorationOutput_General.pdf")
 	par(mfrow = c(2, 2))
@@ -16,7 +17,7 @@ generateExploratory.numeric <- function(data, colramp = NULL) {
   	boxplot(data[var], col = color, main = paste("Boxplot of", var, ""), ylab = "Value", xlab = "Observation # (Sorted)")}
 	dev.off()
 
-	pal <- colorRampPalette(c("red", "yellow"))
+	pal <- colorRampPalette(colramp)
 
 	pdf(file = "ExplorationOutput_BinningCheck.pdf")
 	par(mfrow = c(1, 1))

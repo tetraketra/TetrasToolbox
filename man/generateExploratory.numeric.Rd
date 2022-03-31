@@ -5,10 +5,12 @@
 \title{Generate exploratory histograms, boxplots, and scatter plots for
 all of the numeric variables in a dataframe.}
 \usage{
-generateExploratory.numeric(data, colramp = NULL)
+generateExploratory.numeric(data, colramp = c("red", "green"))
 }
 \arguments{
 \item{data}{Dataframe to extract numeric variables from and plot.}
+
+\item{colramp}{Colors to ramp between. Assumes red to green. Structure of c(first, second).}
 }
 \value{
 Files "ExplorationOutput_General.pdf" and "ExplorationOutput_BinningCheck.pdf" in the same directory as the code ran.
