@@ -15,7 +15,7 @@ generateExploratory.numeric <- function(data, colramp = c("red", "green")) {
   	color <- sample(grDevices::colors()[grep('gr(a|e)y', grDevices::colors(), invert = T)], 1) #Random color for each set of graphs for distinctiveness.
   	hist(data[[var]], col = color, main = paste("Histogram of", var, ""), ylab = "Value", xlab = "Observation # (Sorted)")
   	boxplot(data[var], col = color, main = paste("Boxplot of", var, ""), ylab = "Value", xlab = "Observation # (Sorted)")}
-	invisible(dev.off())
+	whyDoesDevOffReturnStuff <- dev.off()
 
 	pdf(file = "~/ExplorationOutput_BinningCheck.pdf")
 	par(mfrow = c(1, 1))
@@ -24,6 +24,6 @@ generateExploratory.numeric <- function(data, colramp = c("red", "green")) {
 		rampedColors <- pal(length(data[[var]]))
   	plot(1:length(data[[var]]), sort(data[[var]], na.last = TRUE),  main = paste("Binning Check for", var, ""), col = rampedColors, ylab = "Value", xlab = "Observation # (Sorted)")
 	  abline(h = mean(data[[var]], na.rm = TRUE))}
-	invisible(dev.off())
+	whyDoesDevOffReturnStuff <- dev.off()
 
 }
