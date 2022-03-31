@@ -10,13 +10,19 @@
 #' @param packages The packages that must be installed and/or loaded to safely source the file.
 #' @return Nothing.
 #' @export
-safeSource <- function(file, packages){
-	for (p in packages) {
-		if (p %in% rownames(installed.packages())) {
-    	library(p, character.only = T) } else {
-      install.packages(p, dependencies = T)
-      library(p,character.only = T)}
-     }
+safeSource <- function(file, packages = NULL){
+
+	if (!is.null(packages)) {
+		for (p in packages) {
+			if (p %in% rownames(installed.packages())) {
+    		library(p, character.only = T) }
+			else {
+      	install.packages(p, dependencies = T)
+      	library(p,character.only = T)
+			}
+		}
+	}
+
 	source(file)
 }
 

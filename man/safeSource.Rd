@@ -4,7 +4,7 @@
 \alias{safeSource}
 \title{Safely source a file.}
 \usage{
-safeSource(file, packages)
+safeSource(file, packages = NULL)
 }
 \arguments{
 \item{file}{The file to source.}
