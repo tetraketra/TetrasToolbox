@@ -6,7 +6,7 @@
 #' @param flagLevels The values of the "_OoB_Flag" variable in the format c(unmodified, too low, too high). Can be either numeric or character.
 #' @return Dataframe with added "_OoB_Flag" and "_Truncated" variables.
 #' @export
-truncateOutliers <- function(data, flagLevels = c(0, 1, 2)) {
+truncateOutliers.numeric <- function(data, flagLevels = c(0, 1, 2)) {
 	numerics_names <- names(data)[unlist(lapply(data, is.numeric))]
 
 	#This function returns a truncated value (if necessary).

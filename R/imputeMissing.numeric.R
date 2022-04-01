@@ -8,7 +8,7 @@
 #' @param flagLevels The values of the "_Imputed_Flag" variable in the format c(unmodified, was NA). Can be numeric, character, or logical.
 #' @return Dataframe with added "_Imputed_Flag" variable and changed values.
 #' @export
-imputeMissing <- function(data, flagLevels = c(0, 1), miceMeth = "pmm", miceSeed = NA, miceM = 5, miceMaxit = 50) {
+imputeMissing.all <- function(data, flagLevels = c(0, 1), miceMeth = "pmm", miceSeed = NA, miceM = 5, miceMaxit = 50) {
 	na_names <- names(which(colSums(is.na(data)) > 0))
 	numeric_names <- names(data)[unlist(lapply(data, is.numeric))]
 	na_numeric_names <- intersect(na_names, numeric_names)
