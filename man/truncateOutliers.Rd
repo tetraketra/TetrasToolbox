@@ -2,8 +2,7 @@
 % Please edit documentation in R/truncateOutliers.R
 \name{truncateOutliers}
 \alias{truncateOutliers}
-\title{Truncate outliers in entire dataset to 1.5*IQR standard.
-This accepts the \emph{entire} dataset and returns the \emph{entire} dataset with new variables.}
+\title{Truncate outliers in entire dataset to 1.5*IQR standard.}
 \usage{
 truncateOutliers(data, flagLevels = c(0, 1, 2))
 }
@@ -16,6 +15,5 @@ truncateOutliers(data, flagLevels = c(0, 1, 2))
 Dataframe with added "_OoB_Flag" and "_Truncated" variables.
 }
 \description{
-Truncate outliers in entire dataset to 1.5*IQR standard.
 This accepts the \emph{entire} dataset and returns the \emph{entire} dataset with new variables.
 }

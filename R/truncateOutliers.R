@@ -1,4 +1,5 @@
 #' Truncate outliers in entire dataset to 1.5*IQR standard.
+#'
 #' This accepts the *entire* dataset and returns the *entire* dataset with new variables.
 #'
 #' @param data The data to extract numeric variables from and subsequently truncate.
