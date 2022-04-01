@@ -1,6 +1,7 @@
 #' Generate exploratory histograms, boxplots, and scatter plots for
 #' all of the numeric variables in a dataframe.
 #'
+#' Dashed is mean; dotted is median.
 #' @param data Dataframe to extract numeric variables from and plot.
 #' @param colramp Colors to ramp between. Assumes red to green. Structure of c(first, second).
 #' @param regions Number of regions to split the BinningCheck scatterplot into by color.
@@ -36,7 +37,9 @@ generateExploratory.numeric <- function(data, colramp = c("red", "green"), regio
 	for (var in numerics_names) {
 	  dataColors <- sort(regionColors[cut(data[[var]], regions, labels = F)], na.last = T, decreasing = T)
   	plot(1:length(data[[var]]), sort(data[[var]], na.last = TRUE),  main = paste("Binning Check for", var, ""), col = dataColors, ylab = "Value", xlab = "Observation # (Sorted)")
-	  abline(h = mean(data[[var]], na.rm = TRUE))
+	  abline(h = mean(data[[var]], na.rm = TRUE), lty = "dashed")
+	  abline(h = median(data[[var]], na.rm = TRUE), lty = "dotted")
+
   }
 	whyDoesDevOffReturnStuff <- dev.off()
 

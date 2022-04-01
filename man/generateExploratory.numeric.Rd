@@ -18,6 +18,5 @@ generateExploratory.numeric(data, colramp = c("red", "green"), regions = 100)
 Files "ExplorationOutput_General.pdf" and "ExplorationOutput_BinningCheck.pdf" in the same directory as the code ran.
 }
 \description{
-Generate exploratory histograms, boxplots, and scatter plots for
-all of the numeric variables in a dataframe.
+Dashed is mean; dotted is median.
 }
