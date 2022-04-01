@@ -3,27 +3,41 @@
 #'
 #' @param data Dataframe to extract numeric variables from and plot.
 #' @param colramp Colors to ramp between. Assumes red to green. Structure of c(first, second).
+#' @param regions Number of regions to split the BinningCheck scatterplot into by color.
 #' @return Files "ExplorationOutput_General.pdf" and "ExplorationOutput_BinningCheck.pdf" in the same directory as the code ran.
 #' @export
 
-generateExploratory.numeric <- function(data, colramp = c("red", "green")) {
+generateExploratory.numeric <- function(data, colramp = c("red", "green"), regions = 50) {
 
+  #Fetch numeric variables.
+	numerics_names <- names(data)[unlist(lapply(data, is.numeric))]
+
+  #Open first file.
 	pdf(file = "ExplorationOutput_General.pdf")
 	par(mfrow = c(2, 2))
-	numerics_names <- names(data)[unlist(lapply(data, is.numeric))]
+
+	#Populate first file.
 	for (var in numerics_names) {
   	color <- sample(grDevices::colors()[grep('gr(a|e)y', grDevices::colors(), invert = T)], 1) #Random color for each set of graphs for distinctiveness.
   	hist(data[[var]], col = color, main = paste("Histogram of", var, ""), ylab = "", xlab = "")
-  	boxplot(data[[var]], col = color, main = paste("Boxplot of", var, ""), ylab = "", xlab = "")}
+  	boxplot(data[[var]], col = color, main = paste("Boxplot of", var, ""), ylab = "", xlab = "")
+  }
 	whyDoesDevOffReturnStuff <- dev.off()
 
+	#Open second file.
 	pdf(file = "ExplorationOutput_BinningCheck.pdf")
 	par(mfrow = c(1, 1))
+
+	#Establish color regions.
 	pal <- colorRampPalette(colramp)
+	regionColors <- pal(regions)
+
+	#Populate second file.
 	for (var in numerics_names) {
-		rampedColors <- pal(length(data[[var]]))
-  	plot(1:length(data[[var]]), sort(data[[var]], na.last = TRUE),  main = paste("Binning Check for", var, ""), col = rampedColors, ylab = "Value", xlab = "Observation # (Sorted)")
-	  abline(h = mean(data[[var]], na.rm = TRUE))}
+	  dataColors <- sort(regionColors[cut(data[[var]], regions, labels = F)], na.last = T)
+  	plot(1:length(data[[var]]), sort(data[[var]], na.last = TRUE),  main = paste("Binning Check for", var, ""), col = dataColors, ylab = "Value", xlab = "Observation # (Sorted)")
+	  abline(h = mean(data[[var]], na.rm = TRUE))
+  }
 	whyDoesDevOffReturnStuff <- dev.off()
 
 }
