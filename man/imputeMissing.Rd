@@ -16,7 +16,7 @@ imputeMissing(
 \arguments{
 \item{data}{The data to extract numeric variables from and subsequently truncate.}
 
-\item{flagLevels}{The values of the "_Imputed_Flag" variable in the format c(unmodified, was NA). Can be either numeric or character.}
+\item{flagLevels}{The values of the "_Imputed_Flag" variable in the format c(unmodified, was NA). Can be numeric, character, or logical.}
 
 \item{meth}{The method to be passed to the mice() function.}
 }
