@@ -9,7 +9,7 @@ truncateOutliers(data, flagLevels = c(0, 1, 2))
 \arguments{
 \item{data}{The data to extract numeric variables from and subsequently truncate.}
 
-\item{flagLevels}{The values of the "_OoB_Flag"s in the format c(unmodified, too low, too high). Can be either numeric or character.}
+\item{flagLevels}{The values of the "_OoB_Flag" variable in the format c(unmodified, too low, too high). Can be either numeric or character.}
 }
 \value{
 Dataframe with added "_OoB_Flag" and "_Truncated" variables.

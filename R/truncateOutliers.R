@@ -3,7 +3,7 @@
 #' This accepts the *entire* dataset and returns the *entire* dataset with new variables.
 #'
 #' @param data The data to extract numeric variables from and subsequently truncate.
-#' @param flagLevels The values of the "_OoB_Flag"s in the format c(unmodified, too low, too high). Can be either numeric or character.
+#' @param flagLevels The values of the "_OoB_Flag" variable in the format c(unmodified, too low, too high). Can be either numeric or character.
 #' @return Dataframe with added "_OoB_Flag" and "_Truncated" variables.
 #' @export
 truncateOutliers <- function(data, flagLevels = c(0, 1, 2)) {
