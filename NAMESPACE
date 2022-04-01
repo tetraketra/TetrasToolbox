@@ -3,3 +3,4 @@
 export(generateExploratory.numeric)
 export(safeSource)
 export(summaryFunctions)
+export(truncateOutliers)
