@@ -38,12 +38,16 @@ generateExploratory.numeric <- function(data, colors = T, colramp = c("red", "gr
 
 		sortedData <- sort(data[[var]], na.last = TRUE)
 
-	  dataColors <- regionColors[cut(sortedData, regions, labels = F)]
+		dataColors <- cut(sortedData, regions, labels = F)
+	  dataColors <- regionColors[dataColors]
+	  dataColors[is.na(dataColors)] <- "#FFFFFF"
+
   	if(colors) {
   		plot(1:length(data[[var]]), sortedData,  main = paste("Binning Check for", var, ""), col = dataColors, ylab = "Value", xlab = "Observation # (Sorted)")}
 	  else {plot(1:length(data[[var]]), sortedData,  main = paste("Binning Check for", var, ""), ylab = "Value", xlab = "Observation # (Sorted)")}
-	  abline(h = mean(data[[var]], na.rm = TRUE), lty = "dashed")
-	  abline(h = median(data[[var]], na.rm = TRUE), lty = "dotted")
+
+	  abline(h = mean(sortedData, na.rm = TRUE), lty = "dashed") #Mean
+	  abline(h = median(sortedData, na.rm = TRUE), lty = "dotted") #Median
 
   }
 	whyDoesDevOffReturnStuff <- dev.off()
