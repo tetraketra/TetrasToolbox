@@ -5,7 +5,7 @@
 \title{Generate exploratory histograms, boxplots, and scatter plots for
 all of the numeric variables in a dataframe.}
 \usage{
-generateExploratory.numeric(data, colramp = c("red", "green"), regions = 50)
+generateExploratory.numeric(data, colramp = c("red", "green"), regions = 100)
 }
 \arguments{
 \item{data}{Dataframe to extract numeric variables from and plot.}
