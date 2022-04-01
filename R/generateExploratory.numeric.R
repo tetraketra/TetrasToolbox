@@ -8,7 +8,7 @@
 #' @return Files "ExplorationOutput_General.pdf" and "ExplorationOutput_BinningCheck.pdf" in the same directory as the code ran.
 #' @export
 
-generateExploratory.numeric <- function(data, colramp = c("red", "green"), regions = 100) {
+generateExploratory.numeric <- function(data, colors = T, colramp = c("red", "green"), regions = 100) {
 
   #Fetch numeric variables.
 	numerics_names <- names(data)[unlist(lapply(data, is.numeric))]
@@ -35,8 +35,13 @@ generateExploratory.numeric <- function(data, colramp = c("red", "green"), regio
 
 	#Populate second file.
 	for (var in numerics_names) {
-	  dataColors <- regionColors[cut(sort(data[[var]], na.last = T, decreasing = T), regions, labels = F)]
-  	plot(1:length(data[[var]]), sort(data[[var]], na.last = TRUE),  main = paste("Binning Check for", var, ""), col = dataColors, ylab = "Value", xlab = "Observation # (Sorted)")
+
+		sortedData <- sort(data[[var]], na.last = TRUE)
+
+	  dataColors <- regionColors[cut(sortedData, regions, labels = F)]
+  	if(colors) {
+  		plot(1:length(data[[var]]), sortedData,  main = paste("Binning Check for", var, ""), col = dataColors, ylab = "Value", xlab = "Observation # (Sorted)")}
+	  else {plot(1:length(data[[var]]), sortedData,  main = paste("Binning Check for", var, ""), ylab = "Value", xlab = "Observation # (Sorted)")}
 	  abline(h = mean(data[[var]], na.rm = TRUE), lty = "dashed")
 	  abline(h = median(data[[var]], na.rm = TRUE), lty = "dotted")
 
