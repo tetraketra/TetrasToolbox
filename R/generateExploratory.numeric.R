@@ -35,7 +35,7 @@ generateExploratory.numeric <- function(data, colramp = c("red", "green"), regio
 
 	#Populate second file.
 	for (var in numerics_names) {
-	  dataColors <- sort(regionColors[cut(data[[var]], regions, labels = F)], na.last = T, decreasing = T)
+	  dataColors <- regionColors[cut(sort(data[[var]], na.last = T, decreasing = T), regions, labels = F)]
   	plot(1:length(data[[var]]), sort(data[[var]], na.last = TRUE),  main = paste("Binning Check for", var, ""), col = dataColors, ylab = "Value", xlab = "Observation # (Sorted)")
 	  abline(h = mean(data[[var]], na.rm = TRUE), lty = "dashed")
 	  abline(h = median(data[[var]], na.rm = TRUE), lty = "dotted")
