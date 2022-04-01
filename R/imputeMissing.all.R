@@ -10,17 +10,15 @@
 #' @export
 imputeMissing.all <- function(data, flagLevels = c(0, 1), miceMeth = "pmm", miceSeed = NA, miceM = 5, miceMaxit = 50) {
 	na_names <- names(which(colSums(is.na(data)) > 0))
-	numeric_names <- names(data)[unlist(lapply(data, is.numeric))]
-	na_numeric_names <- intersect(na_names, numeric_names)
 
-	for (name in na_numeric_names) { #For the variables which have NA values...
+	for (name in na_names) { #For the variables which have NA values...
   	vec <- data[[name]] #Take them as raw vectors...
   	if (sum(is.na(vec)) == 0) {next} #Don't create an imputation flag if there weren't any values to be imputed. Otherwise...
   	willBeImputed <- ifelse(is.na(vec), flagLevels[2], flagLevels[1])
   	data[[paste(name, "_Imputed_Flag", sep = "")]] <- willBeImputed
   } #Create an imputation flag (name based on OG variables) variable.
 
-	data[na_numeric_names] <- data[na_numeric_names] |> mice::mice(m = miceM, maxit = miceMaxit, meth = miceMeth, seed = miceSeed) |> mice::complete() #No flag variables have been used to generate imputations.
+	data[na_names] <- data[na_names] |> mice::mice(m = miceM, maxit = miceMaxit, meth = miceMeth, seed = miceSeed) |> mice::complete() #No flag variables have been used to generate imputations.
 
 	data
 }
